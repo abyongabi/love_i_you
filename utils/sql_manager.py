@@ -19,7 +19,7 @@ def execute(query: str, params=None) -> tuple[Any, str | None]:
         connection.commit()
 
         if cursor.description:
-            return cursor.fetchone(), None
+            return cursor.fetchall(), None
 
         return True, None
     

@@ -8,7 +8,7 @@ def main(request: LoginRequest):
     query: str = 'SELECT id, password FROM "Users" WHERE username = %s'
     result, _ = execute(query, (request.username, ))
 
-    id, stored_password = result if result else (None, None)
+    id, stored_password = result[0] if result else (None, None)
     status: bool = bool(stored_password) and verify_value(request.password, stored_password)
     message: str = create_access_token(get_token_payload(request, id)) if status else "Invalid credentials, please try again."
 

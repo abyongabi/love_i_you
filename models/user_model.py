@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-from models.common_model import StrField
+from models.common_model import StrField, IntField
 
 
 class CreateUserRequest(BaseModel):
@@ -12,3 +12,12 @@ class CreateUserRequest(BaseModel):
 class LoginRequest(BaseModel):
     username: str = StrField()
     password: str = StrField()
+
+
+class CreateRoomRequest(BaseModel):
+    roomname: str = StrField()
+
+
+class CreateUpdateUserAccessRequest(BaseModel):
+    user_id: int = IntField()
+    room_access: list[IntField]

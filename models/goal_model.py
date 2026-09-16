@@ -6,3 +6,4 @@ from models.common_model import StrField
 class CreateGoalRequest(BaseModel):
     title: str = StrField()
     budget: float
+    room_id: int

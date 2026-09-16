@@ -6,7 +6,7 @@ from utils.sql_manager import execute
 def main(request: CreateUserRequest) -> StandardResponse:
     hashed_password: str = hash_value(request.password)
 
-    query: str = 'INSERT INTO "Users"(username, password, email) VALUES (%s, %s, %s)'
+    query: str = 'INSERT INTO "Users"(username, password, email) VALUES (%s, %s, %s) RETURNING id'
     result, message = execute(query, (request.username, hashed_password, request.email))
 
     return StandardResponse(success=result is not None, message=message)

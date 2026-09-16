@@ -7,8 +7,8 @@ from utils.sql_manager import execute
 def main(request: CreateGoalRequest) -> StandardResponse:
 	user_id: int = get_user_id()
 
-	query = 'INSERT INTO "Goal" (title, budget, user_id) VALUES (%s, %s, %s)'
-	result, message = execute(query, (request.title, request.budget, user_id))
+	query = 'INSERT INTO "Goal" (title, budget, user_id, room_id) VALUES (%s, %s, %s, %s)'
+	result, message = execute(query, (request.title, request.budget, user_id, request.room_id))
 
 	return StandardResponse(
 		success=result is True,
