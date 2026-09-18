@@ -27,6 +27,11 @@ function escapeHtml(value) {
 
 function bubbleSize(priority) { return `${86 + (Math.max(1, Math.min(5, Number(priority) || 1)) * 25)}px`; }
 
+function bubbleColor(goalId) {
+  const value = String(goalId).split('').reduce((total, character) => total + character.charCodeAt(0), 0);
+  return colors[value % colors.length];
+}
+
 function isOverAchievementBox(bubble) {
   const box = $('achievementBox').getBoundingClientRect();
   const rect = bubble.getBoundingClientRect();
@@ -104,7 +109,8 @@ function renderGoals(rows) {
   }
   field.innerHTML = goals.map((goal, index) => {
     const priority = Math.max(1, Math.min(5, Number(goal.priority) || 1));
-    return `<button class="goal-bubble" type="button" data-goal='${JSON.stringify(goal).replace(/'/g, '&#39;')}' style="--bubble-size:${bubbleSize(priority)};--bubble-color:${colors[index % colors.length]};" aria-label="Increase priority for ${escapeHtml(goal.title)}"><span class="bubble-title">${escapeHtml(goal.title)}</span></button>`;
+    const color = bubbleColor(goal.id);
+    return `<button class="goal-bubble" type="button" data-goal='${JSON.stringify(goal).replace(/'/g, '&#39;')}' style="--bubble-size:${bubbleSize(priority)};--bubble-color:${color};" aria-label="Increase priority for ${escapeHtml(goal.title)}"><span class="bubble-title">${escapeHtml(goal.title)}</span></button>`;
   }).join('');
   field.querySelectorAll('.goal-bubble').forEach((bubble, index) => {
     const size = Number.parseInt(bubble.style.getPropertyValue('--bubble-size'), 10);
