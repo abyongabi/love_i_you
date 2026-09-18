@@ -205,7 +205,8 @@ $('loginForm').addEventListener('submit', async (event) => {
 
 $('goalForm').addEventListener('submit', async (event) => {
   event.preventDefault();
-  const button = event.currentTarget.querySelector('button');
+  const form = event.currentTarget;
+  const button = form.querySelector('button');
   button.disabled = true;
   try {
     const result = await request('/goal/create_goal', {
@@ -213,7 +214,7 @@ $('goalForm').addEventListener('submit', async (event) => {
       body: JSON.stringify({ title: $('goalTitle').value })
     });
     if (!result.success) throw new Error(result.message || 'Could not create goal.');
-    event.currentTarget.reset();
+    $('goalForm').reset();
     setMessage($('goalMessage'), 'A new goal has bloomed.', true);
     await loadGoals();
   } catch (error) { setMessage($('goalMessage'), error.message); }
