@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f9f5ee">
+  <title>nest egg | your goals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">~</span><span>nest egg</span></div>
+      <div class="topbar-actions"><span id="loginState">Not signed in</span><button class="text-button" id="logoutButton" type="button" hidden>Sign out</button></div>
+    </header>
+
+    <section class="login-screen" id="loginScreen">
+      <div class="login-copy"><p class="eyebrow">A little space for big plans</p><h1>What are you<br><em>growing toward?</em></h1><p>Sign in to see your goals drift into view.</p></div>
+      <form class="login-card" id="loginForm"><div class="card-sparkle">✦</div><h2>Welcome back</h2><label for="username">Username</label><input id="username" required minlength="6" autocomplete="username" placeholder="your username"><label for="password">Password</label><input id="password" type="password" required autocomplete="current-password" placeholder="your password"><button class="primary-button" type="submit">Enter my garden <span>→</span></button><p class="message" id="loginMessage" aria-live="polite"></p></form>
+    </section>
+
+    <section class="goal-screen" id="goalScreen" hidden>
+      <div class="goal-heading"><div><p class="eyebrow">Your little universe</p><h1>Goals in bloom</h1></div><button class="icon-button" id="refreshButton" type="button" aria-label="Refresh goals" title="Refresh goals">↻</button></div>
+      <div class="bubble-field" id="goalField"><div class="bubble-layer" id="bubbleLayer"><div class="field-note"><span class="field-note-icon">✦</span><strong>Your garden is quiet</strong><span>Use the little console below to plant your first goal.</span></div></div><div class="achievement-box" id="achievementBox"><span class="achievement-icon">✓</span><span>Goal achieved</span></div><div class="fireworks" id="fireworks" aria-hidden="true"></div></div>
+      <p class="message field-message" id="goalMessage" aria-live="polite"></p>
+    </section>
+
+    <section class="console" id="console" hidden>
+      <div class="console-handle"><span></span><span></span><span></span></div>
+      <div class="console-inner"><div class="console-intro"><span class="console-orb">＋</span><div><p class="eyebrow">Plant something new</p><h2>New goal</h2></div></div><form class="goal-form" id="goalForm"><div class="goal-input"><label for="goalTitle">I am saving for</label><input id="goalTitle" required minlength="10" maxlength="100" placeholder="a tiny cabin by the lake"></div><button class="plant-button" type="submit">Plant goal <span>✦</span></button></form></div>
+    </section>
+  </main>
+  <script src="/app.js" defer></script>
+</body>
+</html>

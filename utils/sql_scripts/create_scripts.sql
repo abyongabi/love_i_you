@@ -28,14 +28,17 @@ CREATE TABLE IF NOT EXISTS "Goal" (
     title VARCHAR(500) NOT NULL,
     budget FLOAT NOT NULL,
     user_id INT NOT NULL,
-    room_id INT NOT NULL,
+    room_id INT,
+    priority INT NOT NULL DEFAULT 1 CHECK (priority BETWEEN 1 AND 5),
     progress FLOAT DEFAULT 0.0,
     active BOOLEAN DEFAULT FALSE,
     requires_audit BOOLEAN DEFAULT TRUE,
+    active BOOLEAN DEFAULT TRUE,
 
     CONSTRAINT fk_goal_user FOREIGN KEY (user_id) REFERENCES "Users"(id) ON DELETE CASCADE,
     CONSTRAINT fk_goal_room_id FOREIGN KEY (room_id) REFERENCES "Room"(id) ON DELETE CASCADE
 );
+
 
 
 CREATE TABLE IF NOT EXISTS "Mission" (

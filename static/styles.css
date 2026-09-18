@@ -1,0 +1,53 @@
+:root {
+  --ink: #28363b;
+  --muted: #819096;
+  --sky: #6EC6E8;
+  --sun: #FFD447;
+  --red: #E94B3C;
+  --green: #3B8C5A;
+  --brown: #8B5A2B;
+  --line: rgba(40, 54, 59, .12);
+  --shadow: 0 20px 55px rgba(88, 91, 82, .15);
+}
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; color: var(--ink); font-family: 'DM Sans', sans-serif; background: var(--sky); }
+body::before { display: none; }
+button, input, select { font: inherit; } button { cursor: pointer; } [hidden] { display: none !important; }
+.app-shell { width: min(1240px, calc(100% - 36px)); min-height: calc(100vh - 36px); margin: 18px auto; padding: 26px 34px 42px; border: 10px solid #fff; border-radius: 30px; background: #fff; box-shadow: 0 0 0 5px rgba(255,255,255,.55), 0 18px 40px rgba(59,68,83,.18); }
+.topbar { display: flex; align-items: center; justify-content: space-between; }
+.brand { display: flex; align-items: center; gap: 11px; font-weight: 700; letter-spacing: -.03em; }
+.brand-mark { display: grid; place-items: center; width: 35px; height: 35px; border-radius: 50%; color: var(--green); background: white; box-shadow: 0 8px 22px rgba(62, 78, 77, .12); font-size: 20px; }
+.topbar-actions { display: flex; align-items: center; gap: 17px; color: var(--muted); font-size: 13px; }
+.text-button { padding: 0; border: 0; color: var(--ink); background: transparent; font-weight: 700; }
+.eyebrow { margin: 0 0 8px; color: var(--green); font-size: 10px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
+h1, h2 { margin: 0; font-family: 'Fraunces', serif; font-weight: 500; letter-spacing: -.05em; } h1 em { color: var(--green); font-style: normal; }
+.login-screen { display: grid; grid-template-columns: 1fr 360px; align-items: center; gap: 90px; max-width: 930px; min-height: calc(100vh - 110px); margin: 0 auto; }
+.login-copy h1 { margin-bottom: 22px; font-size: clamp(3.8rem, 7vw, 6.6rem); line-height: .91; } .login-copy > p:last-child { margin: 0; color: var(--muted); font-size: 17px; }
+.login-card { position: relative; padding: 35px; border: 1px solid rgba(255,255,255,.9); border-radius: 28px; background: rgba(255,255,255,.74); box-shadow: var(--shadow); backdrop-filter: blur(15px); }
+.card-sparkle { position: absolute; top: 26px; right: 30px; color: #e7bd73; font-size: 22px; } .login-card h2 { margin-bottom: 22px; font-size: 29px; }
+label { display: block; margin: 15px 0 7px; color: var(--muted); font-size: 11px; font-weight: 700; }
+input, select { width: 100%; padding: 13px 14px; border: 1px solid var(--line); border-radius: 13px; outline: 0; color: var(--ink); background: rgba(255,255,255,.76); } input:focus, select:focus { border-color: #79bd9e; box-shadow: 0 0 0 4px rgba(121,189,158,.14); }
+.primary-button, .plant-button { border: 0; border-radius: 14px; color: var(--ink); background: white; box-shadow: 0 9px 20px rgba(64,83,78,.13); font-weight: 700; transition: transform .2s, box-shadow .2s; }
+.primary-button { display: flex; justify-content: space-between; width: 100%; margin-top: 24px; padding: 14px 17px; } .primary-button:hover, .plant-button:hover { transform: translateY(-2px); box-shadow: 0 13px 24px rgba(64,83,78,.18); }
+.message { min-height: 18px; margin: 13px 0 0; color: #bf6d63; font-size: 12px; line-height: 1.4; } .message.success { color: #4e9b7c; }
+.goal-screen { padding: 70px 0 230px; } .goal-heading { display: flex; align-items: end; justify-content: space-between; gap: 20px; max-width: 1010px; margin: 0 auto 24px; } .goal-heading h1 { font-size: clamp(3rem,6vw,5rem); line-height: .95; }
+.icon-button { width: 40px; height: 40px; border: 1px solid rgba(255,255,255,.95); border-radius: 50%; color: var(--ink); background: white; box-shadow: 0 7px 18px rgba(64,83,78,.11); font-size: 20px; }
+.bubble-field { position: relative; min-height: 485px; max-width: 1080px; margin: auto; overflow: hidden; border: 3px solid rgba(59,140,90,.28); border-radius: 42px; background: rgba(110,198,232,.17); box-shadow: inset 0 0 50px rgba(255,255,255,.35); } .bubble-field::before { position: absolute; inset: 0; content: ''; border: 1px dashed rgba(59,140,90,.38); border-radius: 39px; }
+.bubble-layer { position: absolute; inset: 0; overflow: hidden; }
+.goal-bubble { position: absolute; z-index: 1; display: flex; align-items: center; justify-content: center; width: var(--bubble-size); height: var(--bubble-size); padding: 20px; overflow: hidden; border: 3px solid rgba(255,255,255,.62); border-radius: 50%; color: var(--ink); background: var(--bubble-color); box-shadow: 0 16px 25px rgba(77,86,78,.15), inset 8px 8px 18px rgba(255,255,255,.2); text-align: center; touch-action: none; user-select: none; transition: transform .25s, box-shadow .25s, width .3s, height .3s; }
+.goal-bubble::after { position: absolute; top: 18%; left: 22%; width: 22%; height: 12%; content: ''; border-radius: 50%; background: rgba(255,255,255,.42); transform: rotate(-25deg); }
+.goal-bubble:hover { transform: scale(1.08); box-shadow: 0 22px 33px rgba(77,86,78,.22), inset 8px 8px 18px rgba(255,255,255,.25); } .goal-bubble:disabled { cursor: wait; opacity: .65; }
+.bubble-title { display: block; max-width: 100%; overflow-wrap: anywhere; word-break: break-word; font-size: clamp(11px,1.5vw,15px); font-weight: 700; line-height: 1.2; }
+.achievement-box { position: absolute; bottom: 18px; left: 18px; z-index: 3; display: grid; place-items: center; gap: 3px; width: 116px; height: 78px; padding: 8px; border: 2px dashed rgba(255,255,255,.9); border-radius: 17px; color: #fff; background: rgba(53,91,128,.45); box-shadow: 0 8px 18px rgba(47,76,105,.18); font-size: 11px; font-weight: 700; pointer-events: none; }
+.achievement-icon { display: grid; place-items: center; width: 27px; height: 27px; border-radius: 50%; color: var(--brown); background: var(--sun); font-size: 18px; }
+.achievement-box.ready { border-color: var(--sun); background: rgba(59,140,90,.72); transform: scale(1.05); }
+.goal-bubble.dragging { z-index: 5; cursor: grabbing; transform: scale(1.12); }
+.fireworks { position: absolute; inset: 0; z-index: 6; pointer-events: none; }
+.spark { position: absolute; width: 7px; height: 7px; border-radius: 50%; background: var(--spark-color); animation: burst .8s ease-out forwards; }
+.field-note { position: relative; z-index: 1; display: grid; place-items: center; gap: 7px; color: var(--muted); text-align: center; } .field-note strong { color: var(--ink); font-family: 'Fraunces', serif; font-size: 24px; font-weight: 500; } .field-note-icon { color: #e4b96d; font-size: 22px; } .field-message { max-width: 800px; margin: 10px auto; text-align: center; }
+@keyframes float { 0%,100% { transform: translateY(0) rotate(-1deg); } 50% { transform: translateY(-10px) rotate(1deg); } }
+@keyframes burst { 0% { opacity: 1; transform: translate(0, 0) scale(1); } 100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(.2); } }
+.console { position: fixed; right: 0; bottom: 0; left: 0; z-index: 5; padding: 0 24px 18px; } .console-inner { display: flex; align-items: center; gap: 34px; max-width: 1120px; margin: auto; padding: 19px 27px 21px; border: 1px solid rgba(255,255,255,.9); border-radius: 25px; background: rgba(255,255,255,.84); box-shadow: 0 3px 35px rgba(73,85,78,.2); backdrop-filter: blur(18px); }
+.console-handle { display: flex; gap: 5px; width: 35px; margin: 0 auto 5px; } .console-handle span { width: 7px; height: 4px; border-radius: 5px; background: rgba(40,54,59,.2); } .console-intro { display: flex; align-items: center; gap: 12px; flex: 0 0 auto; } .console-intro h2 { font-size: 26px; } .console-orb { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; color: var(--green); background: rgba(110,198,232,.35); font-size: 25px; }
+.goal-form { display: flex; align-items: end; gap: 12px; flex: 1; } .goal-input { flex: 1; } .goal-input label { margin: 0 0 6px; } .plant-button { flex: 0 0 auto; padding: 14px 19px; } .plant-button span { margin-left: 5px; color: #daa95c; }
+@media (max-width: 760px) { .app-shell { padding: 20px 17px 30px; } .login-screen { grid-template-columns: 1fr; gap: 35px; min-height: auto; padding: 80px 8px 50px; } .login-copy h1 { font-size: 4rem; } .login-card { padding: 27px; } .goal-screen { padding-top: 55px; padding-bottom: 390px; } .bubble-field { min-height: 430px; } .bubble-field::before { border-radius: 28px; } .console { padding: 0 10px 10px; } .console-inner { display: block; padding: 17px; border-radius: 22px; } .console-intro { margin-bottom: 13px; } .goal-form { display: grid; grid-template-columns: 1fr auto; } .goal-input { grid-column: 1 / -1; } }
